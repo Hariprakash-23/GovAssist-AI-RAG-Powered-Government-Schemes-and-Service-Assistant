@@ -1,0 +1,26 @@
+[
+    {
+        "city":"Chennai",
+        "name":"CSC Anna Nagar",
+        "address":"Anna Nagar West",
+        "phone":"9876543210"
+    },
+    {
+        "city":"Delhi",
+        "name":"CSC Connaught Place",
+        "address":"Connaught Place",
+        "phone":"9988776655"
+    },
+    {
+        "city":"Bengaluru",
+        "name":"CSC MG Road",
+        "address":"MG Road",
+        "phone":"9123456780"
+    },
+    {
+        "city":"Trichy",
+        "name":"CSC Cantonment",
+        "address":"Cantonment",
+        "phone":"9345678912"
+    }
+]
