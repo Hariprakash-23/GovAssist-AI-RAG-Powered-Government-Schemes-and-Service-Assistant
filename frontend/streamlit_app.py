@@ -1,7 +1,6 @@
-import requests
 import streamlit as st
 
-API_URL = "http://127.0.0.1:5000/chat"
+from app.chatbot.rag import GovernmentRAG
 
 st.set_page_config(
     page_title="Government AI Chatbot",
@@ -10,8 +9,10 @@ st.set_page_config(
 )
 
 st.title("🏛️ Government Services AI Chatbot")
-
 st.write("Ask about government schemes, eligibility, documents, and CSC centres.")
+
+if "chatbot" not in st.session_state:
+    st.session_state.chatbot = GovernmentRAG()
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -35,20 +36,15 @@ if question:
         st.markdown(question)
 
     try:
-
-        response = requests.post(
-            API_URL,
-            json={"question": question},
-            timeout=30
+        result = st.session_state.chatbot.ask(
+            question,
+            session_id="default"
         )
 
-        data = response.json()
-
-        answer = data["answer"]
+        answer = result["answer"]
 
     except Exception as e:
-
-        answer = f"Error: {e}"
+        answer = f"Error: {str(e)}"
 
     st.session_state.messages.append(
         {
